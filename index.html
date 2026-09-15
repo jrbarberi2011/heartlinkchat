@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>HeartLinkChat • Wauchula • Arcadia • Florida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;color:#fff;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; overflow-x:hidden;}
+  .wrap{width:100%; max-width:420px; padding:18px 16px 10px; display:flex; flex-direction:column; gap:12px; min-height:100vh;}
+  header{text-align:center; padding:6px 0 2px}
+  .logo{font-size:28px; font-weight:900; color:#ff2a8a; letter-spacing:-0.5px; display:flex; align-items:center; justify-content:center; gap:8px;}
+  .sub{font-size:10px; letter-spacing:2.5px; color:#7a7a7a; margin-top:10px; font-weight:700; text-transform:uppercase;}
+  .sub2{font-size:12px; color:#4a4a4a; margin-top:6px;}
+  .badge{display:inline-flex; align-items:center; gap:6px; background:#0f2a18; border:1px solid #1a4d2a; color:#3cff8a; font-size:12px; font-weight:700; padding:8px 16px; border-radius:999px; margin:8px auto 2px;}
+  .btn{width:100%; border:0; border-radius:999px; padding:16px 18px; font-size:15px; font-weight:800; cursor:pointer; transition:transform .1s; text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;}
+  .btn:active{transform:scale(.98)}
+  .pink{background:#ff2a8a; color:#fff; box-shadow:0 0 20px rgba(255,42,138,.35);}
+  .pink-light{background:#ff2a8a; color:#fff;}
+  .green{background:#00ff88; color:#000; box-shadow:0 0 22px rgba(0,255,136,.45); font-size:15px;}
+  .dark{background:#151515; color:#fff; border:1px solid #2a2a2a;}
+  .social-row{display:flex; gap:10px; margin-top:2px;}
+  .social{flex:1; border-radius:999px; padding:14px 8px; font-size:13px; font-weight:800; border:0; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;}
+  .fb{background:#1877f2; color:#fff; box-shadow:0 4px 14px rgba(24,119,242,.4);}
+  .ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5); color:#fff; box-shadow:0 4px 14px rgba(214,41,118,.4);}
+  .tt{background:linear-gradient(180deg,#111 0%,#000 100%); color:#fff; border:1px solid #222; box-shadow:0 4px 14px rgba(0,0,0,.6);}
+  .create{width:100%; border-radius:999px; padding:14px; background:transparent; border:1.5px dashed #3a3a3a; color:#d0d0d0; font-weight:700; font-size:14px; display:flex; align-items:center; justify-content:center; gap:10px; cursor:pointer;}
+  .create span.plus{background:#fff; color:#000; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900;}
+  .hint{font-size:11px; color:#3a3a3a; text-align:center; margin-top:2px;}
+  footer{margin-top:auto; text-align:center; padding:18px 0 6px; font-size:10px; color:#2a2a2a; line-height:1.6;}
+  /* Room styles hidden for V6.0 starter - ready for expansion */
+  #lounge, #videoWall, #classifieds {display:none}
+  .row2{display:flex; gap:10px;}
+  .row2 .btn{flex:1; font-size:13px; padding:14px 10px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">💖 HeartLinkChat</div>
+    <div class="sub">ALWAYS OPEN • 6 MAX • NO 5-MIN LIMIT • COZY</div>
+    <div class="sub2">Wauchula • Arcadia • Florida • Real people, no bots</div>
+    <div class="badge">✅ V6.0 • Real Website • Ready for Video + Classifieds</div>
+  </header>
+
+  <button class="btn pink" onclick="joinMain()">Main Lounge — Tap to join →</button>
+  <div class="hint">1/6 cozy • Real-time • Always open</div>
+
+  <div class="row2">
+    <button class="btn dark" onclick="joinRoom('florida')">Florida Locals</button>
+    <button class="btn dark" onclick="joinRoom('after')">After Hours</button>
+  </div>
+
+  <button class="btn pink-light" onclick="joinRoom('lounge')">Enter Lounge — chat only</button>
+  <button class="btn green" onclick="goLive()">Go Live on Cam — tap to start cam instantly!</button>
+
+  <div class="social-row">
+    <a class="social fb" href="https://facebook.com" target="_blank">f Facebook</a>
+    <a class="social ig" href="https://instagram.com" target="_blank">Instagram</a>
+    <a class="social tt" href="https://tiktok.com" target="_blank">TikTok</a>
+  </div>
+
+  <button class="create" onclick="createRoom()"><span class="plus">+</span> Create Your Own Room</button>
+
+  <!-- V6.0 PLACEHOLDERS - Ready for your ideas -->
+  <div id="videoWall" style="background:#111; border-radius:16px; padding:14px; border:1px solid #222;">
+    <h3 style="color:#ff2a8a; font-size:14px;">🎬 Video Wall - Coming Next</h3>
+    <p style="color:#666; font-size:12px; margin-top:6px;">People post videos for likes, comments, sharing. Wiring ready for Supabase.</p>
+  </div>
+
+  <div id="classifieds" style="background:#111; border-radius:16px; padding:14px; border:1px solid #222;">
+    <h3 style="color:#00ff88; font-size:14px;">📌 Classifieds Corner - Coming Next</h3>
+    <p style="color:#666; font-size:12px; margin-top:6px;">Local Craigslist-style board for Hardee County. Wiring ready.</p>
+  </div>
+
+  <footer>
+    No bots • No 5-min limit • 6 max • Tap heart 5× for admin<br>
+    V6.0 • Real Website Starter • No Pill • Ready to Build<br>
+    <span style="color:#333;">heartlinkchat.com • Wauchula, FL • Real People</span>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
